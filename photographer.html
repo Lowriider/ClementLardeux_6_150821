@@ -1,20 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d94eca0ac2.js" crossorigin="anonymous"></script>
+    <script type="module" src="./ressources/js/main.js"></script>
+    <link rel="stylesheet" href="./ressources/css/style.css">
     <title>FishEye</title>
 </head>
+
 <body>
-    <header>
+    <header role="banner">
         <nav class="nav">
             <div class="nav__logo">
-                <a href="index.html" title="HomePage"><img
-                src="https://res.cloudinary.com/dlpyn3wxf/image/upload/v1614078430/logo_mig5no.png"
-                alt="FishEye Home Page"></a>
+                <a href="index.html" title="HomePage">
+                    <img src="https://res.cloudinary.com/dlpyn3wxf/image/upload/v1614078430/logo_mig5no.png"
+                        alt="FishEye Home Page">
+                </a>
             </div>
-        </nav>
     </header>
+    <main>
+        <!-- INFOS -->
+        <div class="profil" aria-label="photographer information">
+            <section class="profil__info"></section>
+        </div>
+
+        <!-- DROPDOWN -->
+        <div class="dropdown">
+            <span id="dropdown__text">Trier par</span>
+            <div id="dropdown__wrapper">
+                <button class="dropdown__button" aria-haspopup="listbox">Popularité</button>
+                <span class="fas fa-chevron-down arrow-down-open" role='button'></span>
+                <ul class="dropdown__hidden" role="listbox">
+                    <li class="filter" role='option'>Popularité <span class="fas fa-chevron-up arrow-up-close"></span>
+                    </li>
+                    <li class="filter" role='option'>Date</li>
+                    <li class="filter" role='option'>Tître</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PORTEFOLIO -->
+        <section class="portfolio" aria-label='photographer works'></section>
+
+        <!-- BOX -->
+        <div class="likes" aria-label="photographer likes and price"></div>
+
+        <!--MODAL-->
+        <div role="dialog" class="form" aria-label="contact me form" aria-labelledby="form-title" aria-hidden="true">
+            <form action="photographer-page.html" method="POST" id="contact-form">
+                <header aria-label="contact form header">
+                    <h1 class="form__title">
+                        <span>Contactez-moi</span>
+                        <span class="form__name"></span>
+                    </h1>
+                    <button class="form__close" title="Close form" type="button">
+                        <span class="fas fa-times close-form-icon" aria-hidden="true"></span>
+                    </button>
+                </header>
+                <!-- FIRST NAME -->
+                <div class="form__data" data-error="Vous devez entrer votre prénom." data-error-visible="false">
+                    <label for="first-name" id="label-firstname">Prénom</label>
+                    <input name="first-name" id="first-name" aria-labelledby="label-firstname" placeholder="Prénom">
+                </div>
+                <!-- LAST NAME -->
+                <div class="form__data" data-error="Vous devez entrer votre nom." data-error-visible="false">
+                    <label for="last-name" id="label-lastname">Nom</label>
+                    <input name="last-name" id="last-name" aria-labelledby="label-lastname" placeholder="Nom">
+                </div>
+                <!-- EMAIL -->
+                <div class="form__data" data-error="Vous devez entrer un email valide." data-error-visible="false">
+                    <label for="email" id="label-email">Email</label>
+                    <input type="email" name="email" id="email" aria-labelledby="label-email"
+                        placeholder="exemple@email.com">
+                </div>
+                <!-- MESSAGE -->
+                <div class="form__data" data-error="Vous devez entrer votre message." data-error-visible="false">
+                    <label for="message" id="label-message">Votre message</label>
+                    <textarea name="message" id="message" cols="20" rows="5" aria-labelledby="label-message"
+                        placeholder="Votre message..."></textarea>
+                </div>
+                <!-- SUBMIT -->
+                <input type="submit" value="Envoyer" class="form-submit" title="Send">
+            </form>
+        </div>
+        <div id="slider">
+            <div id="slider__container">
+                <!-- boutons précédent, suivant et pause -->
+                <a href="#" class="slider__prev" title="Slide précédente"><span class="fas fa-angle-left fa-2x"
+                        aria-hidden="true"></span></a>
+                <a href="#" class="slider__next" title="Slide suivante"><span class="fas fa-angle-right fa-2x"
+                        aria-hidden="true"></span></a>
+            </div>
+        </div>
 </body>
+
 </html>

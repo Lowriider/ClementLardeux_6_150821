@@ -1,0 +1,36 @@
+.profil {
+
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    &__portrait {
+        background-color: #59ce26;
+        border-radius: 50%;
+        box-shadow: 0 0 0.8rem rgb(134 134 134 / 43%);
+        height: 12.5rem;
+        margin: 0 auto;
+        object-fit: cover;
+        overflow: hidden;
+        width: 12.5rem;
+    }
+}
+
+.form {
+    display: none;
+}
+
+.portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 2.8125rem 0;
+    padding: 0 1.25rem;
+
+    &__media {
+        border-radius: .3125rem;
+        height: 11.875rem;
+        object-fit: cover;
+        width: 20.9375rem;
+    }
+}

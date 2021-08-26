@@ -1,19 +1,22 @@
 'use strict';
 
 import Getdata from './GetData.js';
-import HomePage from './HomePage.js';
+import Photographer from './Photographer.js';
+import Profil from './Profil.js';
+import Media from './Media.js';
 
 function launch() {
-    console.log(new Getdata().getData())
+
     new Getdata().getData().then(function (data) {
-        if (window.location.pathname.includes("/photographers.html")) {
-            console.log('hello')
-            new HomePage().displayPhotographer(data);
-            console.log(window.location.pathname)
+        
+        if (window.location.pathname.includes("/photographer.html")) {
+            let media = new Media(data);
+            new Profil().displayPhotographer(data);
+            media.boxLikesAndPrice(data);
         }
-        new HomePage().displayPhotographers(data);
+        new Photographer().displayPhotographers(data);
     }).catch(function () {
-        console.error('Failed to load JSON');
+        // console.error('Failed to load JSON');
     })
 }
 document.addEventListener('DOMContentLoaded', launch);

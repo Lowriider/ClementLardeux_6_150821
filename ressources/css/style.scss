@@ -1,5 +1,6 @@
 @import './utils/mixins';
 @import './utils/vars';
+@import './pages/_photographers';
 @import url(https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap);
 
 @include general-style;
@@ -12,6 +13,11 @@
     }
 
     &__filters ul {
+
+        @include breakpoint(desktop) { 
+            top:22px;
+        }
+
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -32,7 +38,7 @@
 }
 
 .photographers {
-    @include flex-row-center;
+    @include photographer-template;
 
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -60,7 +66,7 @@
     }
 
     &__location {
-        color: #901C1C;
+        color: $theme-color-red;
         margin: .2rem;
     }
 
@@ -68,7 +74,7 @@
         color: #757575;
     }
 
-    &__filters {
+    &__tags {
         display: flex;
         justify-content: center;
         margin-top: .5rem;
