@@ -5,14 +5,20 @@ import Photographer from './Photographer.js';
 import Profil from './Profil.js';
 import Media from './Media.js';
 
+
 function launch() {
 
     new Getdata().getData().then(function (data) {
         
         if (window.location.pathname.includes("/photographer.html")) {
-            let media = new Media(data);
-            new Profil().displayPhotographer(data);
-            media.boxLikesAndPrice(data);
+
+            let profil = new Profil();
+            profil.displayPhotographer(data);
+
+            let media = new Media(data, profil.photographerProfil);
+            media.renderMedia();
+         
+            
         }
         new Photographer().displayPhotographers(data);
     }).catch(function () {

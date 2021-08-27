@@ -1,19 +1,87 @@
-.profil {
-
+.photographer__header {
     align-items: center;
-    display: flex;
-    justify-content: space-between;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.photographer__nav{
+    &__img {
+       width: 12.5rem;
+    }
+}
+ 
+
+.profil {
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    &__template {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+    h1 {
+        color: #D3573C;
+        font-size: 2.4em;
+        font-weight: 400;
+    }
+
+    &__location {
+        color: #901c1c;
+        font-size: .9em;
+        margin: 0;
+    }
 
     &__portrait {
-        background-color: #59ce26;
         border-radius: 50%;
-        box-shadow: 0 0 0.8rem rgb(134 134 134 / 43%);
-        height: 12.5rem;
-        margin: 0 auto;
+        height: 100px;
         object-fit: cover;
-        overflow: hidden;
-        width: 12.5rem;
+        width: 100px;
     }
+    &__tagline {
+        color: #525252;
+        font-size: .9em;
+        margin: 0;
+    }
+    &__contact {
+        background: #901c1c;
+        border: none;
+        border-radius: 5px;
+        bottom: 28px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: 500;
+        height: 35px;
+        position: fixed;
+        width: 170px;
+        @media(max-width: 1200px) {
+            left: 0;
+            margin-left: auto;
+            margin-right: auto;
+            right: 0;
+            z-index: 1;
+        }
+    }
+    &__tags {
+        margin: 1rem 0rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__links {
+        border: .5px solid #C4C4C4;
+        border-radius: .6875rem;
+        color: #901C1C;
+        font-size: 12px;
+        margin-right:0.2rem;
+        padding: .0625rem .375rem;
+        text-decoration: none;
+        transition: all .2s;
+    }
+
+}
+.dropdown {
+    display: none;
 }
 
 .form {
@@ -27,10 +95,30 @@
     margin: 2.8125rem 0;
     padding: 0 1.25rem;
 
+    &__article {
+        font-size: 1.1em;
+        font-weight: 500;
+        margin: 0 0 .625rem;
+    }
+
     &__media {
         border-radius: .3125rem;
         height: 11.875rem;
         object-fit: cover;
         width: 20.9375rem;
     }
+
+    &__text {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title {
+        margin: 0.83em 0em;
+        width: 14.0625rem;
+        font-size: 1em;
+        font-weight: 400;
+    }
+
 }
