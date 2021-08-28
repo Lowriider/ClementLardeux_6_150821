@@ -52,40 +52,40 @@
 
         <!--MODAL-->
         <div role="dialog" class="form" aria-label="contact me form" aria-labelledby="form-title" aria-hidden="true">
-            <form action="photographer-page.html" method="POST" id="contact-form">
-                <header aria-label="contact form header">
-                    <h1 class="form__title">
-                        <span>Contactez-moi</span>
-                        <span class="form__name"></span>
-                    </h1>
+            <form action="photographer-page.html" method="POST" class="form__contact">
+                <header class="form__header" aria-label="contact form header">
                     <button class="form__close" title="Close form" type="button">
-                        <span class="fas fa-times close-form-icon" aria-hidden="true"></span>
+                        <span class="fas fa-times" aria-hidden="true"></span>
                     </button>
                 </header>
                 <!-- FIRST NAME -->
-                <div class="form__data" data-error="Vous devez entrer votre prénom." data-error-visible="false">
+                <div class="form__input" data-error="Vous devez entrer votre prénom." data-error-visible="false">
                     <label for="first-name" id="label-firstname">Prénom</label>
-                    <input name="first-name" id="first-name" aria-labelledby="label-firstname" placeholder="Prénom">
+                    <input name="first" id="first" class="form__data" aria-labelledby="label-firstname" placeholder="Prénom">
+                    <span class="form__error"></span>
                 </div>
                 <!-- LAST NAME -->
-                <div class="form__data" data-error="Vous devez entrer votre nom." data-error-visible="false">
+                <div class="form__input" data-error="Vous devez entrer votre nom." data-error-visible="false">
                     <label for="last-name" id="label-lastname">Nom</label>
-                    <input name="last-name" id="last-name" aria-labelledby="label-lastname" placeholder="Nom">
+                    <input name="last" id="last" class="form__data" aria-labelledby="label-lastname" placeholder="Nom">
+                    <span class="form__error"></span>
                 </div>
                 <!-- EMAIL -->
-                <div class="form__data" data-error="Vous devez entrer un email valide." data-error-visible="false">
+                <div class="form__input" data-error="Vous devez entrer un email valide." data-error-visible="false">
                     <label for="email" id="label-email">Email</label>
-                    <input type="email" name="email" id="email" aria-labelledby="label-email"
+                    <input type="email" name="email" class="form__data" id="email" aria-labelledby="label-email"
                         placeholder="exemple@email.com">
+                    <span class="form__error"></span>
                 </div>
                 <!-- MESSAGE -->
-                <div class="form__data" data-error="Vous devez entrer votre message." data-error-visible="false">
+                <div class="form__input" data-error="Vous devez entrer votre message." data-error-visible="false">
                     <label for="message" id="label-message">Votre message</label>
-                    <textarea name="message" id="message" cols="20" rows="5" aria-labelledby="label-message"
+                    <textarea name="message" id="message" class="form__data" cols="20" rows="5" aria-labelledby="label-message"
                         placeholder="Votre message..."></textarea>
+                    <span class="form__error"></span>
                 </div>
                 <!-- SUBMIT -->
-                <input type="submit" value="Envoyer" class="form-submit" title="Send">
+                <input type="submit" value="Envoyer" class="form__submit" title="Send">
             </form>
         </div>
         <div class="slider">

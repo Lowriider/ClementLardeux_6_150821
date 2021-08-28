@@ -1,86 +1,161 @@
-function launchModal() {
-    modalbg.style.display = "block";
-  }
-  // Close modal form //
-  
-  function closeModal() {
-    modalbg.style.display = "none";
+export default class Form {
+  constructor(profil) {
+    this.profil = profil,
+    console.log(this.profil)
+
+    // DOM Elements // 
+    this.form = document.querySelector(".form");
+    this.contact = document.querySelector(".profil__contact");
+    this.closeForm = document.querySelector(".form__close");
+    this.header = document.querySelector(".form__header");
+    this.headerTemplate = `<h1 class="form__header--title">Contactez-moi <br/>${this.profil[0].name}</h1>`;
+    this.header.innerHTML = this.headerTemplate;
+    this.submitFormOk = document.querySelector(".form__submit");
+    this.errorBlock = document.getElementsByClassName("form__error");
+    this.data = document.querySelectorAll(".form__data");
+
+
+    // all var declared //
+    this.regLetters = /^[a-zA-Zéèîï][a-zéèêàçîï]+([-'\s][a-zA-Zéèîï][a-zéèêàçîï]+)?/;
+    this.regmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+
+    this.firstNameOk = false;
+    this.lastNameOk = false;
+    this.emailOk = false;
+    this.messageOk = false;
+    console.log(this.data)
+
+
+
+    this.data.forEach(item => item.addEventListener('blur', function () {
+      console.log(item.id)
+        // check first name field // 
+      if (item.id === "first") {
+        if (item.value.length < 2 || !this.regLetters.test(item.value)) { // if this field length =
+          this.highlightField(item, true);
+        } else {
+          this.highlightField(item, false);
+          this.errorMessagesReset(item);
+          this.firstNameOk = true;
+        }
+          // check last name field // 
+      } else if (item.id === "last") {
+        if (item.value.length < 2 || !this.regLetters.test(item.value)) {
+          this.highlightField(item, true);
+        } else {
+          this.highlightField(item, false);
+          this.errorMessagesReset(item);
+          this.lastNameOk = true;
+        }
+          // check email field // 
+      } else if (item.id === "email") {
+        if (item.value.length < 2 || !this.regmail.test(item.value)) {
+          this.highlightField(item, true);
+        } else {
+          this.highlightField(item, false);
+          this.errorMessagesReset(item);
+          this.emailOk = true;
+        }
+          // check textarea field // 
+      } else if (item.id === "message") {
+        if (item.value.length < 1 || item.value > 100) { // if length of item is sup or equal to 1 and 
+          this.highlightField(item, true);
+        } else {
+          this.highlightField(item, false);
+          this.errorMessagesReset(item);
+          this.messageOk = true;
+        }
+      }
+    }.bind(this)));
+
+    this.contact.addEventListener('click', function () {
+      this.contact.style.display = "none";
+      this.form.style.display = "block";
+    }.bind(this));
+
+    // close form //
+    this.closeForm.addEventListener('click', function () {
+      this.form.style.display = "none";
+      this.contact.style.display = "block";
+    }.bind(this));
+
+    // submit form + message //
+    this.submitFormOk.addEventListener('click', function (e) {
+
+      e.preventDefault(); // prevent default action of the button if the form is not filled with all the infos //
+      this.checkAllFields();
+
+      if (this.checkAllFields()) {
+        this.formOK();
+        this.closeModal();
+        this.reset();
+      } else {
+        this.formNotOK();
+      }
+    }.bind(this));
   }
   
   //alert form not OK //
-  function formNotOK() {
-    alert("verifiez les champs en rouge")
+  formNotOK() {
+    alert("verifiez les champs en rouge");
   }
   // alert form is ok
-  function formOK() {
-    alert("le formulaire a été transmis avec succès")
+  formOK() {
+    alert("le formulaire a été transmis avec succès");
   }
-  
+  closeModal() {
+    this.form.style.display = "none";
+  }
   // fields error messages //
-  function errorMessages(field) {
+  errorMessages(field) {
     switch (field.getAttribute('id')) {
       case 'first': // Si field ID = first then display this text. //
-        errorBlock[0].innerText = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
+        this.errorBlock[0].innerText = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
         break;
       case 'last':
-        errorBlock[1].innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+        this.errorBlock[1].innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
         break;
       case 'email':
-        errorBlock[2].innerText = "Veuillez vérifier votre adresse email.";
+        this.errorBlock[2].innerText = "Veuillez vérifier votre adresse email.";
         break;
-      case 'birthdate':
-        errorBlock[3].innerText = "Vous devez entrer votre date de naissance.";
-        break;
-      case 'quantity':
-        errorBlock[4].innerText = "Veuillez mettre des nombres de 0 à 100";
+      case 'message':
+        this.errorBlock[3].innerText = "Veuillez remplir le champs";
         break;
     }
   }
-  function errorMessagesReset(field) {
+  errorMessagesReset(field) {
     switch (field.getAttribute('id')) {
       case 'first': // Si field ID = first then display this text. //
-        errorBlock[0].innerText = "";
+        this.errorBlock[0].innerText = "";
         break;
       case 'last':
-        errorBlock[1].innerText = "";
+        this.errorBlock[1].innerText = "";
         break;
       case 'email':
-        errorBlock[2].innerText = "";
+        this.errorBlock[2].innerText = "";
         break;
-      case 'birthdate':
-        errorBlock[3].innerText = "";
-        break;
-      case 'quantity':
-        errorBlock[4].innerText = "";
+      case 'message':
+        this.errorBlock[3].innerText = "";
         break;
     }
   }
-  
   // surligne le champs invalide // 
-  function highlightField(field, erreur) {
+  highlightField(field, erreur) {
     if (erreur) {
       field.style.backgroundColor = "#fba";
-      errorMessages(field);
+      this.errorMessages(field);
     } else
       field.style.backgroundColor = "";
-      
-      // errorMessagesReset(field);
+
+    // errorMessagesReset(field);
   }
-  
-  // check first name field // 
-  function checkFirst(field) {
-    if (field.value.length < 2 || !regLetters.test(field.value)) { // if this field length =
-      highlightField(field, true);
-    } else {
-      highlightField(field, false);
-      errorMessagesReset(field);
-      firstNameOk = true;
-    }
-  }
-  
+
+
+
+
   // check last name field //
-  function checkLast(field) {
-    if (field.value.length < 2 || !regLetters.test(field.value)) {
+  checkLast(field) {
+    if (field.value.length < 2 || !this.regLetters.test(field.value)) {
       highlightField(field, true);
     } else {
       highlightField(field, false);
@@ -88,21 +163,10 @@ function launchModal() {
       lastNameOk = true;
     }
   }
-  
-  // check birthdate //
-  function checkBirthdate(field) {
-    if (!regBirth.test(field.value)) {
-      highlightField(field, true);
-    } else {
-      highlightField(field, false);
-      errorMessagesReset(field);
-      birthdayOk = true;
-    }
-  }
-  
+
   // check email //
-  function checkMail(field) {
-    if (field.value.length < 2 || !regmail.test(field.value)) {
+  checkMail(field) {
+    if (field.value.length < 2 || !this.regmail.test(field.value)) {
       highlightField(field, true);
     } else {
       highlightField(field, false);
@@ -110,97 +174,42 @@ function launchModal() {
       emailOk = true;
     }
   }
-  
-  // check le champ question //
-  function checkTournament(field) {
-    if (field.value.length < 1 || field.value > 100 || !regNumbers.test(field.value)) { // if length of field is sup or equal to 1 and 
+
+  // check le champ message //
+  checkMessage(field) {
+    if (field.value.length < 1 || field.value > 100 || !this.regNumbers.test(field.value)) { // if length of field is sup or equal to 1 and 
       highlightField(field, true);
     } else {
       highlightField(field, false);
       errorMessagesReset(field);
-      tournamentOk = true;
+      messageOk = true;
     }
   }
-  
-  // check le bouton radio coché //
-  function checkCity() {
-    for (let i = 0; i < cityBtn.length; i++) {
-      if (cityBtn[i].checked) { /* check all the boxes and return true if box is checked */
-        cityBtnChecked = true;
-      }
-    }
-    if (!cityBtnChecked) {
-      errorBlock[5].innerText = "Veuillez cocher une ville";
-      return false
-    } 
-    else {
-      errorBlock[5].innerText = "";
-      return true; // if var = true then function must return true //
-    }
-  }
-  
-  // check term of use //
-  
-  function checkTermOfUse() {
-    if (checkboxTOU.checked) { /* if box is checked then return true */
+
+  checkAllFields() {
+    if (this.firstNameOk && this.lastNameOk && this.emailOk && this.messageOk) { // if functions or var = true all fields are OK so function return true //
       return true;
-    } else
-      return false;
-  }
-  
-  // check if fields are ok //
-  
-  function checkAllFields() {
-    if (firstNameOk && lastNameOk && emailOk && birthdayOk && tournamentOk && checkCity() && checkTermOfUse()) { // if functions or var = true all fields are OK so function return true //
-      errorBlock[5].innerText = "";
-      return true;
-    }
-    else {
-      if (!firstNameOk) {
-        firstName.style.backgroundColor = "#fba";
+    } else {
+      if (!this.firstNameOk) {
+        this.firstName.style.backgroundColor = "#fba";
       }
-      if (!lastNameOk) {
-        lastName.style.backgroundColor = "#fba";
+      if (!this.lastNameOk) {
+        this.lastName.style.backgroundColor = "#fba";
       }
-      if (!emailOk) {
-        email.style.backgroundColor = "#fba";
+      if (!this.emailOk) {
+        this.email.style.backgroundColor = "#fba";
       }
-      if (!birthdayOk) {
-        birthdate.style.backgroundColor = "#fba";
-      }
-      if (!tournamentOk) {
-        tournament.style.backgroundColor = "#fba";
-      }
-      if (!checkCity()) {
-        errorBlock[5].innerText = "Veuillez cocher une ville";
+      if (!this.messageOK) {
+        this.message.style.backgroundColor = "#fba"
       }
       return false;
     }
   }
   /* reset all var to false after submiting*/
-  function reset() {
-    firstNameOk = false;
-    lastNameOk = false;
-    emailOk = false;
-    birthdayOk = false;
-    tournamentOk = false;
-    cityBtnChecked = false;
+  reset() {
+    this.firstNameOk = false;
+    this.lastNameOk = false;
+    this.emailOk = false;
+    this.messageOK = false;
   }
-  // submit form + message //
-  
-  function submitForm(e) {
-    e.preventDefault(); // prevent default action of the button if the form is not filled with all the infos //
-    checkCity();
-    checkTermOfUse();
-    checkAllFields();
-  
-    if (checkAllFields()) {
-      formOK();
-      closeModal();
-      reset();
-    } else if (!checkTermOfUse()) {
-      alert("vous devez accepter les CGU avant d'envoyer le formulaire");
-    } else {
-      formNotOK();
-    }
-  }
+}

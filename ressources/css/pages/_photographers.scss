@@ -134,27 +134,38 @@
         color: $theme-color-red;
         font-size: 1.7rem;
         font-weight: bold;
+        position: relative;
+        left: 9.3rem;
+        top:1.7rem;
     }
     &__media {
-        margin: 50%;
         display: flex;
         flex-direction: column;
-
+        align-items: center;
     }
     &__image, &__video {
-        width: 289px;
-        height: 248px;
+        object-fit: cover;
+        border-radius: .3125rem;
+        width: 275px;
+        height: 228px;
     }
     &__video {
         display: none;
     }
     &__buttons {
+        position: relative;
+        bottom: 10rem;
         width: 320px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        a span {
+            color: $theme-color-red;
+        }
     }
     &__text {
+        width: 74%;
+        margin-top: .5rem;
         color: $theme-color-red;
     }
 }
