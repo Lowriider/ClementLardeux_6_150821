@@ -1,3 +1,5 @@
+@include general-style-profil;
+
 .photographer__header {
     align-items: center;
     margin-bottom: 2rem;
@@ -20,14 +22,9 @@
         display: flex;
         justify-content: space-between;
     }
-    h1 {
-        color: #D3573C;
-        font-size: 2.4em;
-        font-weight: 400;
-    }
 
     &__location {
-        color: #901c1c;
+        color: $theme-color-red;
         font-size: .9em;
         margin: 0;
     }
@@ -44,7 +41,7 @@
         margin: 0;
     }
     &__contact {
-        background: #901c1c;
+        background: $theme-color-red;
         border: none;
         border-radius: 5px;
         bottom: 28px;
@@ -71,7 +68,7 @@
     &__links {
         border: .5px solid #C4C4C4;
         border-radius: .6875rem;
-        color: #901C1C;
+        color: $theme-color-red;
         font-size: 12px;
         margin-right:0.2rem;
         padding: .0625rem .375rem;
@@ -109,6 +106,7 @@
     }
 
     &__text {
+        color: $theme-color-red;
         align-items: center;
         display: flex;
         justify-content: space-between;
@@ -121,4 +119,42 @@
         font-weight: 400;
     }
 
+}
+.slider {
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    display: none;
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: #fff;
+
+    &__close {
+        color: $theme-color-red;
+        font-size: 1.7rem;
+        font-weight: bold;
+    }
+    &__media {
+        margin: 50%;
+        display: flex;
+        flex-direction: column;
+
+    }
+    &__image, &__video {
+        width: 289px;
+        height: 248px;
+    }
+    &__video {
+        display: none;
+    }
+    &__buttons {
+        width: 320px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &__text {
+        color: $theme-color-red;
+    }
 }

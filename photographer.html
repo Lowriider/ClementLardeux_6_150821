@@ -12,11 +12,12 @@
 </head>
 
 <body>
-    <header class="photographer__header"role="banner">
+    <header class="photographer__header" role="banner">
         <nav class="photographer__nav">
             <div class="photographer__nav__logo">
                 <a href="index.html" title="HomePage">
-                    <img class="photographer__nav__img" src="https://res.cloudinary.com/dlpyn3wxf/image/upload/v1614078430/logo_mig5no.png"
+                    <img class="photographer__nav__img"
+                        src="https://res.cloudinary.com/dlpyn3wxf/image/upload/v1614078430/logo_mig5no.png"
                         alt="FishEye Home Page">
                 </a>
             </div>
@@ -34,7 +35,8 @@
                 <button class="dropdown__button" aria-haspopup="listbox">Popularité</button>
                 <span class="fas fa-chevron-down arrow-down-open" role='button'></span>
                 <ul class="dropdown__hidden" role="listbox">
-                    <li class="dropdown__filter" role='option'>Popularité <span class="fas fa-chevron-up arrow-up-close"></span>
+                    <li class="dropdown__filter" role='option'>Popularité <span
+                            class="fas fa-chevron-up arrow-up-close"></span>
                     </li>
                     <li class="dropdown__filter" role='option'>Date</li>
                     <li class="dropdown__filter" role='option'>Tître</li>
@@ -86,13 +88,19 @@
                 <input type="submit" value="Envoyer" class="form-submit" title="Send">
             </form>
         </div>
-        <div id="slider">
-            <div id="slider__container">
+        <div class="slider">
+            <div class="slider__media">
+                <span class="fas fa-times slider__close" role="button" title="Close dialog"></span>
+                <img class="slider__image" src="" alt="">
+                <video class="slider__video" controls="controls" src=""></video>
+                <p class="slider__text"></p>
                 <!-- boutons précédent, suivant et pause -->
-                <a href="#" class="slider__prev" title="Slide précédente"><span class="fas fa-angle-left fa-2x"
-                        aria-hidden="true"></span></a>
-                <a href="#" class="slider__next" title="Slide suivante"><span class="fas fa-angle-right fa-2x"
-                        aria-hidden="true"></span></a>
+                <div class="slider__buttons">
+                    <a href="#" class="slider__prev" title=" Média précédent"><span class="fas fa-angle-left fa-2x"
+                            aria-hidden="true"></span></a>
+                    <a href="#" class="slider__next" title=" Média suivant"><span class="fas fa-angle-right fa-2x"
+                            aria-hidden="true"></span></a>
+                </div>
             </div>
         </div>
 </body>

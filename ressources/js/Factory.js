@@ -1,7 +1,6 @@
 export default class Factory {
     constructor() {
         this.elPortfolio = document.querySelector('.portfolio');
-
     }
     createVideo(photographerMedia, i) {
 

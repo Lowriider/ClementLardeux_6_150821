@@ -1,4 +1,4 @@
-@mixin general-style {
+@mixin general-style-home {
     * {
         margin: 0;
         padding: 0;
@@ -28,6 +28,36 @@
         margin-bottom: .7rem;
         margin-top: 1.4rem;
     }
+
+    a {
+        text-decoration: none;
+    }
+}
+@mixin general-style-profil {
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: $font;
+        list-style-type: none;
+    }
+
+    body {
+        max-width: 1440px;
+        @include breakpoint(wide) {
+            margin-left: 0;
+            margin-right: 0;
+            margin: auto;
+        }
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+   h1 {
+        color: #D3573C;
+        font-size: 2.4em;
+        font-weight: 400;
+    }
+
 
     a {
         text-decoration: none;

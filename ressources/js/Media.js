@@ -1,26 +1,19 @@
 import Factory from './Factory.js';
+import Slider from './Slider.js';
 'use strict';
 
 /////////////////////////////////////////
 
 export default class Media {
     constructor(data, photographer) {
-
-        this.boxLikesAndPrice(data, photographer);
-        this.renderMedia(this.boxLikesAndPrice(data, photographer));
+        this.boxLikesAndPrice(data, photographer)
+        this.galleryImg = [];
+        this.galleryText = [];
+        this.renderMedia(this.media, this.galleryImg, this.galleryText);
+        this.renderSlider( this.galleryImg, this.galleryText);
     }
 
-    // call the GalleryFactory to create the media section with 'Like' function and the box
-    renderMedia(photographerMedia) {
-        let factory = new Factory();
-        for (let i = 0; i < photographerMedia.length; i++) {
-            if (photographerMedia[i].image) {
-                factory.createImage(photographerMedia, i);
-            } else if (photographerMedia[i].video) {
-                factory.createVideo(photographerMedia, i)
-            }
-        }
-    }
+    
 
     // creates a box containing the total number of likes and the photographer's price
     boxLikesAndPrice(data, photographer) {
@@ -41,7 +34,26 @@ export default class Media {
                 <span>${price} €/ jour</span>
                 `
         box.innerHTML = boxTemplate;
-        return photographerMedia;
+        return this.media = photographerMedia;
+    }
+    // call the function to create the media section
+    renderMedia(photographerMedia, arrayMediaSource, arrayMediaText) {
+
+        let factory = new Factory();
+        for (let i = 0; i < photographerMedia.length; i++) {
+            if (photographerMedia[i].image) {
+                factory.createImage(photographerMedia, i);
+                arrayMediaSource.push(photographerMedia[i].image);
+                arrayMediaText.push(photographerMedia[i].photoName)
+            } else if (photographerMedia[i].video) {
+                factory.createVideo(photographerMedia, i)
+                arrayMediaSource.push(photographerMedia[i].video);
+                arrayMediaText.push(photographerMedia[i].photoName)
+            }
+        }
+    }
+    renderSlider(arrayMediaSource, arrayMediaText) {
+        let gallery = new Slider(arrayMediaSource, arrayMediaText);
     }
 
 }

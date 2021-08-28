@@ -14,11 +14,7 @@ function launch() {
 
             let profil = new Profil();
             profil.displayPhotographer(data);
-
             let media = new Media(data, profil.photographerProfil);
-            media.renderMedia();
-         
-            
         }
         new Photographer().displayPhotographers(data);
     }).catch(function () {
