@@ -4,8 +4,9 @@ import Getdata from './GetData.js';
 import Photographer from './Photographer.js';
 import Profil from './Profil.js';
 import Media from './Media.js';
+import Factory from './Factory.js';
+import Slider from './Slider.js';
 import Form from './Form.js';
-
 
 function launch() {
 
@@ -16,7 +17,10 @@ function launch() {
             let profil = new Profil();
             profil.displayPhotographer(data);
             let media = new Media(data, profil.photographerProfil);
-            new Form(profil.photographerProfil);
+            let factory = new Factory(media.photographerMedia);
+            let slider = new Slider(factory.galleryImg, factory.galleryText);
+            let form = new Form(profil.photographerProfil);
+            
         }
         new Photographer().displayPhotographers(data);
     }).catch(function () {

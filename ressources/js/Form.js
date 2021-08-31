@@ -1,19 +1,17 @@
 export default class Form {
   constructor(profil) {
     this.profil = profil,
-    console.log(this.profil)
-
+ 
     // DOM Elements // 
     this.form = document.querySelector(".form");
     this.contact = document.querySelector(".profil__contact");
     this.closeForm = document.querySelector(".form__close");
     this.header = document.querySelector(".form__header");
-    this.headerTemplate = `<h1 class="form__header--title">Contactez-moi <br/>${this.profil[0].name}</h1>`;
-    this.header.innerHTML = this.headerTemplate;
+    this.headerFormTemplate = `<h1 class="form__header--title">Contactez-moi <br/>${this.profil[0].name}</h1>`;
+    this.header.innerHTML += this.headerFormTemplate;
     this.submitFormOk = document.querySelector(".form__submit");
     this.errorBlock = document.getElementsByClassName("form__error");
     this.data = document.querySelectorAll(".form__data");
-
 
     // all var declared //
     this.regLetters = /^[a-zA-Zéèîï][a-zéèêàçîï]+([-'\s][a-zA-Zéèîï][a-zéèêàçîï]+)?/;
@@ -23,15 +21,11 @@ export default class Form {
     this.lastNameOk = false;
     this.emailOk = false;
     this.messageOk = false;
-    console.log(this.data)
-
-
-
-    this.data.forEach(item => item.addEventListener('blur', function () {
-      console.log(item.id)
+    
+    this.data.forEach(item => item.addEventListener('blur', function() {
         // check first name field // 
       if (item.id === "first") {
-        if (item.value.length < 2 || !this.regLetters.test(item.value)) { // if this field length =
+        if (item.value.length < 2 || !this.regLetters.test(item.value)) { 
           this.highlightField(item, true);
         } else {
           this.highlightField(item, false);
@@ -68,19 +62,19 @@ export default class Form {
       }
     }.bind(this)));
 
-    this.contact.addEventListener('click', function () {
+    this.contact.addEventListener('click', function() {
       this.contact.style.display = "none";
       this.form.style.display = "block";
     }.bind(this));
-
     // close form //
-    this.closeForm.addEventListener('click', function () {
+
+    document.querySelector(".form__close").addEventListener('click', function() { // this.closeForm ne fonctionne pas...
       this.form.style.display = "none";
       this.contact.style.display = "block";
     }.bind(this));
 
     // submit form + message //
-    this.submitFormOk.addEventListener('click', function (e) {
+    this.submitFormOk.addEventListener('click', function(e) {
 
       e.preventDefault(); // prevent default action of the button if the form is not filled with all the infos //
       this.checkAllFields();
@@ -105,6 +99,7 @@ export default class Form {
   }
   closeModal() {
     this.form.style.display = "none";
+    this.contact.style.display = "block";
   }
   // fields error messages //
   errorMessages(field) {
@@ -146,12 +141,8 @@ export default class Form {
       this.errorMessages(field);
     } else
       field.style.backgroundColor = "";
-
     // errorMessagesReset(field);
   }
-
-
-
 
   // check last name field //
   checkLast(field) {
@@ -163,7 +154,6 @@ export default class Form {
       lastNameOk = true;
     }
   }
-
   // check email //
   checkMail(field) {
     if (field.value.length < 2 || !this.regmail.test(field.value)) {

@@ -1,6 +1,25 @@
 export default class Factory {
-    constructor() {
+    constructor(photographerMedia) {
+        this.media = photographerMedia;
         this.elPortfolio = document.querySelector('.portfolio');
+        this.galleryImg = [];
+        this.galleryText = [];
+        this.createMedia(this.media);
+
+    }
+    
+    createMedia(photographerMedia) {
+        for (let i = 0; i < photographerMedia.length; i++) {
+            if (photographerMedia[i].image) {
+                this.createImage(photographerMedia, i);
+                this.galleryImg.push(photographerMedia[i].image);
+                this.galleryText.push(photographerMedia[i].photoName);
+            } else if (photographerMedia[i].video) {
+                this.createVideo(photographerMedia, i)
+                this.galleryImg.push(photographerMedia[i].video);
+                this.galleryText.push(photographerMedia[i].photoName);
+            }
+        }
     }
     createVideo(photographerMedia, i) {
 
