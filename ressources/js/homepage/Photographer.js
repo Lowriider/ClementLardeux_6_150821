@@ -11,8 +11,8 @@ export default class Photographer {
             let elPhotographers = document.createElement('article');
             elPhotographers.className = photographe.tags.join(' ') + " photographers__introduction";
             let templatePhotographer = `
-                    <a href="../pages/photographer.html?id=${photographe.id}" title="${photographe.name}">
-                    <img class="photographers__portrait" src="../ressources/${photographe.portrait}" alt="" title="${photographe.alt}">
+                    <a href="pages/photographer.html?id=${photographe.id}" title="${photographe.name}">
+                    <img class="photographers__portrait" src="ressources/${photographe.portrait}" alt="" title="${photographe.alt}">
                     <h2 class="photographers__name">${photographe.name}</h2>
                     </a>
                     <p class="photographers__location">${photographe.city}, ${photographe.country}</p>
