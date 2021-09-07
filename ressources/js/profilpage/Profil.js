@@ -20,7 +20,7 @@ export default class Profil {
                 </div>
                 <button class="profil__contact" title='Contact Me'>Contactez-moi</button>
                 <a href='#' title='${photographer[0].alt}'>
-                <img class="profil__portrait" src="../ressources/${photographer[0].portrait}" alt="${photographer[0].alt}">
+                <img class="profil__portrait" src="ressources/${photographer[0].portrait}" alt="${photographer[0].alt}">
                 </a>
             </article>
             `

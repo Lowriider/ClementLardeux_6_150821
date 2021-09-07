@@ -31,7 +31,7 @@ export default class Factory {
         articlePortfolio.className = "portfolio__article";        
         let portfolioTemplate = `
                 <a href="#" title="${photographerMedia[i].photoName}">
-                <video controls="controls" class="portfolio__media" src="../ressources/${photographerMedia[i].video}" alt="${photographerMedia[i].alt}" role="button">
+                <video controls="controls" class="portfolio__media" src="ressources/${photographerMedia[i].video}" alt="${photographerMedia[i].alt}" role="button">
                 </a>
                 <div class="portfolio__text">
                 <h2 class="portfolio__title">${photographerMedia[i].photoName}</h2>
