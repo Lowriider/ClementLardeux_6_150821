@@ -7,7 +7,6 @@ export default class Filter {
     // FILTER TAGS
     constructor() {
         this.list = Array.from(document.querySelectorAll('.nav__filters span'));
-        console.log(this.list)
         this.articles = document.querySelectorAll('.photographers__introduction');
 
         // EVENT LISTENER ADD CLASS ON LI TARGET
