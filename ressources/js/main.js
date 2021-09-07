@@ -8,7 +8,7 @@ import Profil from './profilpage/Profil.js';
 
 function launch() {
     new Getdata().getData().then((data) => {
-           if (window.location.pathname.includes("pages/photographer.html")) {
+           if (window.location.pathname.includes("photographer.html")) {
               document.addEventListener('DOMCoententLoaded', new Profil().displayPhotographer(data));
            }
            else {
