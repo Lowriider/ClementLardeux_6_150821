@@ -29,15 +29,17 @@
         </div>
         <!-- DROPDOWN -->
         <div class="dropdown">
-            <span id="dropdown__text">Trier par</span>
-            <div id="dropdown__wrapper">
-                <button class="dropdown__button" aria-haspopup="listbox">Popularité</button>
-                <span class="fas fa-chevron-down arrow-down-open" role='button'></span>
+            <span class="dropdown__text">Trier par</span>
+            <div class="dropdown__wrapper">
+                <button class="dropdown__button" aria-haspopup="listbox">Popularité <span class="fas fa-chevron-down dropdown__open" role='button'></span></button>
+                
                 <ul class="dropdown__hidden" role="listbox">
-                    <li class="dropdown__filter" role='option'>Popularité <span
-                            class="fas fa-chevron-up arrow-up-close"></span>
+                    <li class="dropdown__filter" role='option'>Popularité
+                        <span class="fas fa-chevron-up dropdown__close"></span>
                     </li>
+                    <hr class="dropdown__x">
                     <li class="dropdown__filter" role='option'>Date</li>
+                    <hr class="dropdown__x">
                     <li class="dropdown__filter" role='option'>Tître</li>
                 </ul>
             </div>
@@ -60,7 +62,8 @@
                 <!-- FIRST NAME -->
                 <div class="form__input" data-error="Vous devez entrer votre prénom." data-error-visible="false">
                     <label for="first-name" id="label-firstname">Prénom</label>
-                    <input name="first" id="first" class="form__data" aria-labelledby="label-firstname" placeholder="Prénom">
+                    <input name="first" id="first" class="form__data" aria-labelledby="label-firstname"
+                        placeholder="Prénom">
                     <span class="form__error"></span>
                 </div>
                 <!-- LAST NAME -->
@@ -79,8 +82,8 @@
                 <!-- MESSAGE -->
                 <div class="form__input" data-error="Vous devez entrer votre message." data-error-visible="false">
                     <label for="message" id="label-message">Votre message</label>
-                    <textarea name="message" id="message" class="form__data" cols="20" rows="5" aria-labelledby="label-message"
-                        placeholder="Votre message..."></textarea>
+                    <textarea name="message" id="message" class="form__data" cols="20" rows="5"
+                        aria-labelledby="label-message" placeholder="Votre message..."></textarea>
                     <span class="form__error"></span>
                 </div>
                 <!-- SUBMIT -->

@@ -12,7 +12,7 @@
         width: 8rem;
     }
 
-    &__filters ul {
+    &__filters {
 
         @include breakpoint(desktop) { 
             top:22px;
@@ -31,9 +31,23 @@
         top: 90px;
         text-align: center;
 
-        li {
+        span {
             @include links-template;
         }
+    }
+    &__filters span:hover, &__filters span.active{
+        color:white;
+        background-color:$theme-color-red;
+    }
+    &__title h1{
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.125rem;
+        @include breakpoint(laptop) {
+            font-size: 2.25rem!important;
+            line-height: 2.925rem;
+        }
+
     }
 }
 
