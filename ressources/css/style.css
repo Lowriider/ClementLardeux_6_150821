@@ -103,6 +103,12 @@ a {
 }
 @media (min-width: 1024px) {
   .profil__portrait {
+    height: 150px;
+    width: 150px;
+  }
+}
+@media (min-width: 1340px) {
+  .profil__portrait {
     height: 200px;
     width: 200px;
   }
@@ -132,16 +138,21 @@ a {
 }
 @media (min-width: 1024px) {
   .profil__contact {
+    height: 40px;
+    width: 150px;
+    position: absolute;
+    top: 10.8rem;
+    margin: 0;
+    left: 50%;
+  }
+}
+@media (min-width: 1340px) {
+  .profil__contact {
     height: 55px;
     position: absolute;
     top: 10.8rem;
     margin: 0;
     left: 45%;
-  }
-}
-@media (min-width: 1340px) {
-  .profil__contact {
-    left: 35%;
   }
 }
 .profil__tags {
@@ -210,9 +221,16 @@ a {
     left: 13rem;
     padding: 0.625rem 1.25rem;
     position: absolute;
-    top: 26.3rem;
+    top: 23rem;
     width: 10rem;
   }
+}
+@media (min-width: 1024px) and (min-width: 1340px) {
+  .dropdown__button {
+    top: 26rem;
+  }
+}
+@media (min-width: 1024px) {
   .dropdown__filter {
     padding: 1.25rem;
     color: #fff;
@@ -224,6 +242,8 @@ a {
     justify-content: space-between;
     align-items: center;
   }
+}
+@media (min-width: 1024px) {
   .dropdown__x {
     margin: auto;
     color: #FFFFFF;
@@ -231,11 +251,20 @@ a {
     height: 1px;
     background-color: #FFFFFF;
   }
+}
+@media (min-width: 1024px) {
   .dropdown__open {
     position: relative;
-    top: 10px;
+    top: 1px;
     left: 135px;
   }
+}
+@media (min-width: 1024px) and (min-width: 1340px) {
+  .dropdown__open {
+    top: 5px;
+  }
+}
+@media (min-width: 1024px) {
   .dropdown__close, .dropdown__open {
     color: #fff;
   }
