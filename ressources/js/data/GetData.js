@@ -1,5 +1,5 @@
 'use strict';
-
+// GET DATA WITH FETCH //
 export default class Getdata {
     async getData() {
         let url = 'Api/photographers.json';

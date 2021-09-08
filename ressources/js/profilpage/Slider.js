@@ -9,17 +9,19 @@ export default class Slider {
     this.nextSlide = document.querySelector('div .slider__next');
     this.prevSlide = document.querySelector('div .slider__prev');
     this.close = document.querySelector('.slider__close');
+    this.target = document.querySelectorAll('.portfolio__media');
 
     this.textNumber = 0;
     this.imgNumber = 0;
     this.imgs = media;
     this.slidertext = text;
 
+    // CLOSE SLIDER EVENT
     this.close.addEventListener('click', function () {
       this.slider.style.display = "none";
-    }.bind(this))
+    }.bind(this));
 
-    this.target = document.querySelectorAll('.portfolio__media');
+    // WHEN YOU CLICK ON A MEDIA OPEN SLIDER 
     this.target.forEach(item => {
       item.addEventListener('click', function (e) {
         this.slider.style.display = "block";
@@ -36,10 +38,14 @@ export default class Slider {
         }
       }.bind(this))
     });
+    // EVENT KEYBOARD LISTENER
     document.addEventListener('keydown', this.keyboard.bind(this));
+    // EVENT PREVIOUS MEDIA
     this.prevSlide.addEventListener('click', this.prevImg.bind(this));
+    // EVENT NEXT MEDIA
     this.nextSlide.addEventListener('click', this.nextImg.bind(this));
   };
+  // SLIDER RENDER HTML
   sliderHTML() {
     if (this.imgs[this.imgNumber].includes('.jpg')) {
       document.querySelector('.slider__image').style.display = "block";
@@ -53,6 +59,7 @@ export default class Slider {
       document.querySelector('.slider__text').innerHTML = this.slidertext[this.textNumber];
     }
   }
+  // PREVIOUS MEDIA FUNCTION
   prevImg() {
     this.imgNumber--;
     this.textNumber--;
@@ -62,7 +69,7 @@ export default class Slider {
     }
     this.sliderHTML();
   }
-
+  // NEXT MEDIA FUNCTION
   nextImg() {
     this.imgNumber++;
     this.textNumber++;
@@ -72,7 +79,7 @@ export default class Slider {
     }
     this.sliderHTML();
   }
-
+// KEYBOARD NAV FUNCTION
   keyboard(e) {
     switch (e.keyCode) {
       case 37: // left

@@ -15,7 +15,6 @@ export default class Utils {
         this.dropdownClose = document.getElementsByClassName('dropdown__close');
         this.dropdownHidden = document.getElementsByClassName('dropdown__hidden');
         this.dropdownFilter = Array.from(document.getElementsByClassName('dropdown__filter'));
-        console.log(this.dropdownFold[0].innerHTML)
 
         this.boxLikesAndPrice(photographerMedia);
         this.dropDown();
@@ -39,24 +38,27 @@ export default class Utils {
                 }
             }.bind(this));
         });
-
+        // FILTER MEDIA BY ...
         this.dropdownFilter.forEach((item, index) => item.addEventListener('click', (e) => {
             this.dropdownHidden[0].style.display = "none";
-
+            // IF EVENT = POPULARITE
             if (index === 0) {
                 this.dropdownFold[0].innerHTML = `Popularité <span class="fas fa-chevron-down dropdown__open" role="button" aria-hidden="true"></span>`;
-
+                // SORT MEDIA BY LIKES
                 this.mediaSortArray = photographerMedia.sort((a,b) => {
                     return b.likes - a.likes;
                 });
+                // IF EVENT = DATE
             } else if (index === 1) {
                 this.dropdownFold[0].innerHTML = `Date <span class="fas fa-chevron-down dropdown__open" role="button" aria-hidden="true"></span>`;
-
+                // SORT MEDIA BY MOST RECENT DATE
                 this.mediaSortArray = photographerMedia.sort((a, b) =>{
                     return new Date(a.date).valueOf() - new Date(b.date).valueOf();
                 });
+                 // IF EVENT = TITRE
             } else if (index === 2) {
                 this.dropdownFold[0].innerHTML = `Titre <span class="fas fa-chevron-down dropdown__open" role="button" aria-hidden="true"></span>`;
+                // SORT MEDIA BY ALPHABETIC ORDER
                 this.mediaSortArray = photographerMedia.sort((a,b) =>{
                     if(a.photoName < b.photoName) {
                         return -1;
@@ -82,6 +84,7 @@ export default class Utils {
                 `
         box.innerHTML = boxTemplate;
     }
+    // DISPLAY DROPDOWN MENU
     dropDown() {
 
         if (this.dropdownFold) {
@@ -95,9 +98,7 @@ export default class Utils {
             });
         }
     }
-    sortMedia() {
-
-    }
+    // DELETE ALL MEDIA AND CALL FACTORY TO REBUILD IT BY FILTER CALLED
     displaySortMedia() {
         document.querySelector('.portfolio').innerHTML = "";
         new Factory(this.mediaSortArray);

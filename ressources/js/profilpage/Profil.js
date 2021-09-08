@@ -4,6 +4,7 @@ import Slider from "./Slider.js";
 import Factory from "../factory/Factory.js";
 import Utils from "./Utils.js";
 
+// load photographer's profil //
 export default class Profil {
     displayPhotographer(data) {
         const id = window.location.search.split('id=')[1];
@@ -34,6 +35,7 @@ export default class Profil {
             <span class="profil__links" href="" data-filter="${photographer[0].tags[j]}">#${photographer[0].tags[j]}</a>
             `;
         }
+
         let factory = new Factory(photographerMedia);
         new Utils(photographer, photographerMedia);
         new Slider(factory.galleryImg, factory.galleryText);

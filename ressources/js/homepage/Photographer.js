@@ -2,7 +2,7 @@
 import Filter from "./Filters.js";
 
 export default class Photographer {
-
+// load photographer's profil and Call filter Object //
     displayPhotographers(data) {
         for (let i = 0; i < data.photographers.length; i++) {
 

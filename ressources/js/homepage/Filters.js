@@ -1,7 +1,7 @@
 'use strict';
 /////////////////////////////////////////
 
-// FUNCTION FILTER TAGS
+// OBJECT FILTER TAGS
 export default class Filter {
 
     // FILTER TAGS
@@ -47,6 +47,7 @@ export default class Filter {
 
         return activeFilters.length == compareData.length;
     }
+    // HIDE / SHOW FILTERED PHOTOGRAPHERS
     filterPhotographers(articles) {
         articles.forEach((article) => {
             if (this.checkFilters(article)) {

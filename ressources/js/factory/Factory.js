@@ -7,7 +7,6 @@ export default class Factory {
     constructor(photographerMedia) {
         this.media = photographerMedia;
         this.elPortfolio = document.querySelector('.portfolio');
-        console.log(this.media)
         this.galleryImg = [];
         this.galleryText = [];
         this.createMedia(this.media);
@@ -16,11 +15,15 @@ export default class Factory {
     createMedia(photographerMedia) {
         for (let i = 0; i < photographerMedia.length; i++) {
             if (photographerMedia[i].image) {
+                // CREATE IMG //
                 this.createImage(photographerMedia, i);
+                // TAKE IMG + ALT AND PUT THEM IN ARRAYS
                 this.galleryImg.push(photographerMedia[i].image);
                 this.galleryText.push(photographerMedia[i].photoName);
             } else if (photographerMedia[i].video) {
+                 // CREATE VID //
                 this.createVideo(photographerMedia, i)
+                // TAKE IMG + ALT AND PUT THEM IN ARRAYS
                 this.galleryImg.push(photographerMedia[i].video);
                 this.galleryText.push(photographerMedia[i].photoName);
             }

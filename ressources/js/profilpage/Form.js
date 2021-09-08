@@ -22,6 +22,7 @@ export default class Form {
     this.emailOk = false;
     this.messageOk = false;
     
+    // EVENT STARTS WHEN YOU LEAVE INPUT FIELD
     this.data.forEach(item => item.addEventListener('blur', function() {
         // check first name field // 
       if (item.id === "first") {
@@ -177,7 +178,7 @@ export default class Form {
   }
 
   checkAllFields() {
-    if (this.firstNameOk && this.lastNameOk && this.emailOk && this.messageOk) { // if functions or var = true all fields are OK so function return true //
+    if (this.firstNameOk && this.lastNameOk && this.emailOk && this.messageOk) { // if  var set to true all fields are OK so function return true //
       return true;
     } else {
       if (!this.firstNameOk) {
