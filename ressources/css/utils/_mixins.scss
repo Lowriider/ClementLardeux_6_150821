@@ -126,14 +126,19 @@ BREAKPOINTS
         }
     }
 
-    @else if $point==phablet {
+    @else if $point==mobileL {
         @media (min-width: 580px) {
             @content ;
         }
     }
 
-    @else if $point==mobilemed {
+    @else if $point==mobileS {
         @media (min-width: 375px) {
+            @content ;
+        }
+    }
+    @else if $point==mobileXS {
+        @media (min-width: 320px) {
             @content ;
         }
     }

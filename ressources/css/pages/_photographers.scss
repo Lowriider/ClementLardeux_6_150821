@@ -9,6 +9,7 @@
 .photographer__nav {
     &__img {
         width: 12.5rem;
+
         @include breakpoint(laptop) {
             margin-left: 5%;
         }
@@ -20,9 +21,8 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     align-items: center;
-    @include breakpoint(desktop) {
-        
-    }
+
+    @include breakpoint(desktop) {}
 
     &__template {
         @include breakpoint(laptop) {
@@ -103,14 +103,16 @@
         cursor: pointer;
         font-size: 1em;
         font-weight: 500;
-        @include breakpoint(laptop){
+
+        @include breakpoint(laptop) {
             height: 55px;
             position: absolute;
             top: 10.8rem;
             margin: 0;
-            left:45%;
+            left: 45%;
 
         }
+
         @include breakpoint(desktop) {
 
             left: 35%;
@@ -166,6 +168,7 @@
             top: 405px;
             width: 11rem;
             z-index: 10;
+
             :nth-child(1) {
                 display: flex;
                 justify-content: space-between;
@@ -316,6 +319,7 @@
     justify-content: space-around;
     margin: 2.8125rem 0;
     padding: 0 1.25rem;
+
     @include breakpoint(laptop) {
         padding: 0;
     }
@@ -324,6 +328,9 @@
         font-size: 1.1em;
         font-weight: 500;
         margin: 0 0 .625rem;
+        @include breakpoint(mobileXS) {
+            width: 300px;
+        }
     }
 
     &__media {
@@ -332,6 +339,9 @@
         height: 11.875rem;
         object-fit: cover;
         width: 20.9375rem;
+        @include breakpoint(mobileXS) {
+            width: 300px;
+        }
         @include breakpoint(desktop) {
             height: 300px;
             width: 350px;
@@ -339,23 +349,27 @@
     }
 
     &__text {
-        color: $theme-color-red!important;
+        color: $theme-color-red !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
     &__title {
-        color: $theme-color-red!important;
+        color: $theme-color-red !important;
         width: 14.0625rem;
         margin: 0.83em 0em;
         font-size: 0.84em;
         font-weight: 400;
         line-height: 1.1rem;
     }
+
     &__likes {
         position: relative;
         right: -1.8rem;
+        @include breakpoint(mobileXS) {
+            right: 0;
+        }
     }
 
 }
@@ -402,12 +416,27 @@
         top: 1.7rem;
         font-size: 1.7rem;
         font-weight: bold;
+
+        @include breakpoint(laptop) {
+            left: 28rem;
+        }
+
+        @include breakpoint(desktop) {
+            left: 35rem;
+        }
     }
 
     &__media {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 15rem 0;
+
+        @include breakpoint(laptop) {
+            margin: 5rem 0;
+        }
+
+        @include breakpoint(desktop) {}
     }
 
     &__image,
@@ -416,6 +445,16 @@
         height: 228px;
         object-fit: cover;
         border-radius: .3125rem;
+
+        @include breakpoint(laptop) {
+            width: 800px;
+            height: 600px;
+        }
+
+        @include breakpoint(desktop) {
+            width: 1050px;
+            height: 900px;
+        }
     }
 
     &__video {
@@ -433,11 +472,28 @@
         a span {
             color: $theme-color-red;
         }
+        @include breakpoint(laptop) {
+            width:900px;
+            bottom: 22rem;
+         }
+ 
+         @include breakpoint(desktop) {
+             width: 1150px;
+             bottom: 30rem;
+         }
     }
 
     &__text {
         width: 74%;
         margin-top: .5rem;
         color: $theme-color-red;
+
+        @include breakpoint(laptop) {
+           width: 79%;
+        }
+
+        @include breakpoint(desktop) {
+            width: 73%;
+        }
     }
 }
