@@ -162,7 +162,7 @@
             border-radius: 5px;
             color: #fff;
             display: none;
-            left: 167px;
+            left: 195px;
             padding: 0;
             position: absolute;
             top: 405px;
@@ -211,8 +211,14 @@
             margin: auto;
             color: #FFFFFF;
             width: 9rem;
+            height: 1px;
+            background-color: #FFFFFF;
         }
-
+        &__open {
+            position: relative;
+            top: 10px;
+            left: 135px;
+        }
         &__close,
         &__open {
             color: #fff;

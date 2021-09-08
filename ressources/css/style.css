@@ -185,7 +185,7 @@ a {
     border-radius: 5px;
     color: #fff;
     display: none;
-    left: 167px;
+    left: 195px;
     padding: 0;
     position: absolute;
     top: 405px;
@@ -228,6 +228,13 @@ a {
     margin: auto;
     color: #FFFFFF;
     width: 9rem;
+    height: 1px;
+    background-color: #FFFFFF;
+  }
+  .dropdown__open {
+    position: relative;
+    top: 10px;
+    left: 135px;
   }
   .dropdown__close, .dropdown__open {
     color: #fff;

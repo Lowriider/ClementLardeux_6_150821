@@ -32,7 +32,7 @@ export default class Profil {
 
         for (let j = 0; j < photographer[0].tags.length; j++) {
             el[0].innerHTML += `
-            <span class="profil__links" href="" data-filter="${photographer[0].tags[j]}">#${photographer[0].tags[j]}</a>
+            <span class="profil__links" data-filter="${photographer[0].tags[j]}">#${photographer[0].tags[j]}</a>
             `;
         }
 

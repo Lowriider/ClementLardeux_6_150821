@@ -43,21 +43,21 @@ export default class Utils {
             this.dropdownHidden[0].style.display = "none";
             // IF EVENT = POPULARITE
             if (index === 0) {
-                this.dropdownFold[0].innerHTML = `Popularité <span class="fas fa-chevron-down dropdown__open" role="button" aria-hidden="true"></span>`;
+                this.dropdownFold[0].innerHTML = `Popularité`;
                 // SORT MEDIA BY LIKES
                 this.mediaSortArray = photographerMedia.sort((a,b) => {
                     return b.likes - a.likes;
                 });
                 // IF EVENT = DATE
             } else if (index === 1) {
-                this.dropdownFold[0].innerHTML = `Date <span class="fas fa-chevron-down dropdown__open" role="button" aria-hidden="true"></span>`;
+                this.dropdownFold[0].innerHTML = `Date`;
                 // SORT MEDIA BY MOST RECENT DATE
                 this.mediaSortArray = photographerMedia.sort((a, b) =>{
                     return new Date(a.date).valueOf() - new Date(b.date).valueOf();
                 });
                  // IF EVENT = TITRE
             } else if (index === 2) {
-                this.dropdownFold[0].innerHTML = `Titre <span class="fas fa-chevron-down dropdown__open" role="button" aria-hidden="true"></span>`;
+                this.dropdownFold[0].innerHTML = `Titre`;
                 // SORT MEDIA BY ALPHABETIC ORDER
                 this.mediaSortArray = photographerMedia.sort((a,b) =>{
                     if(a.photoName < b.photoName) {
