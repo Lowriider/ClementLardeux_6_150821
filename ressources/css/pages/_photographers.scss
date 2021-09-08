@@ -408,6 +408,9 @@
     top: 0;
     left: 0;
     background-color: #fff;
+    @include breakpoint(desktop) {
+        height: 150%;
+    }
 
     &__close {
         color: $theme-color-red;

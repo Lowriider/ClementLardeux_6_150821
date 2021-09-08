@@ -327,7 +327,7 @@ a {
   font-weight: 500;
   margin: 0 0 0.625rem;
 }
-@media (min-width: 320px) {
+@media (max-width: 350px) {
   .portfolio__article {
     width: 300px;
   }
@@ -339,7 +339,7 @@ a {
   object-fit: cover;
   width: 20.9375rem;
 }
-@media (min-width: 320px) {
+@media (max-width: 350px) {
   .portfolio__media {
     width: 300px;
   }
@@ -368,7 +368,7 @@ a {
   position: relative;
   right: -1.8rem;
 }
-@media (min-width: 320px) {
+@media (max-width: 350px) {
   .portfolio__likes {
     right: 0;
   }
@@ -408,6 +408,11 @@ a {
   top: 0;
   left: 0;
   background-color: #fff;
+}
+@media (min-width: 1340px) {
+  .slider {
+    height: 150%;
+  }
 }
 .slider__close {
   color: #901C1C;
