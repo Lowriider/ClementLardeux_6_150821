@@ -7,6 +7,7 @@ export default class Factory {
     constructor(photographerMedia) {
         this.media = photographerMedia;
         this.elPortfolio = document.querySelector('.portfolio');
+        console.log(this.media)
         this.galleryImg = [];
         this.galleryText = [];
         this.createMedia(this.media);
@@ -48,7 +49,7 @@ export default class Factory {
         articlePortfolio.className = "portfolio__article";
         let portfolioTemplate = `
                 <a href="#" title="${photographerMedia[i].photoName}">
-                <img class="portfolio__media" src="../ressources/${photographerMedia[i].image}" alt="${photographerMedia[i].alt}" role="button">
+                <img class="portfolio__media" src="ressources/${photographerMedia[i].image}" alt="${photographerMedia[i].alt}" role="button">
                 </a>
                 <div class="portfolio__text">
                 <h2 class="portfolio__title">${photographerMedia[i].photoName}</h2>

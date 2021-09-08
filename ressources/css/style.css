@@ -41,6 +41,11 @@ a {
 .photographer__nav__img {
   width: 12.5rem;
 }
+@media (min-width: 1024px) {
+  .photographer__nav__img {
+    margin-left: 5%;
+  }
+}
 
 .profil {
   margin-top: 2rem;
@@ -56,11 +61,12 @@ a {
   .profil__template {
     background: #fafafa;
     padding: 2rem;
+    margin: 0 55px;
   }
 }
 @media (min-width: 1340px) {
   .profil__template {
-    margin: 0 20px;
+    margin: 0 55px;
   }
 }
 .profil__name {
@@ -127,9 +133,15 @@ a {
 @media (min-width: 1024px) {
   .profil__contact {
     height: 55px;
-    left: 42rem;
     position: absolute;
-    top: 9.8rem;
+    top: 10.8rem;
+    margin: 0;
+    left: 45%;
+  }
+}
+@media (min-width: 1340px) {
+  .profil__contact {
+    left: 35%;
   }
 }
 .profil__tags {
@@ -159,7 +171,7 @@ a {
 @media (min-width: 1024px) {
   .dropdown {
     display: flex;
-    margin-left: 2rem;
+    margin-left: 3.5rem;
     margin-top: 2rem;
   }
   .dropdown__text {
@@ -180,6 +192,11 @@ a {
     width: 11rem;
     z-index: 10;
   }
+  .dropdown__hidden :nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .dropdown__button {
     align-items: center;
     background: #901C1C;
@@ -189,25 +206,20 @@ a {
     display: flex;
     font-size: 1rem;
     font-weight: 500;
-    justify-content: flex-start;
-    left: 11rem;
+    justify-content: space-between;
+    left: 13rem;
     padding: 0.625rem 1.25rem;
     position: absolute;
     top: 26.3rem;
     width: 10rem;
   }
-  .dropdown__button :nth-child(1) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .dropdown__filter .dropdown__filter {
+  .dropdown__filter {
     padding: 1.25rem;
     color: #fff;
     font-size: 1.2rem;
     font-weight: 500;
   }
-  .dropdown__filter .dropdown__filter :nth-child(1) {
+  .dropdown__filter :nth-child(1) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -301,10 +313,14 @@ a {
 .portfolio {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1336px;
   justify-content: space-around;
   margin: 2.8125rem 0;
   padding: 0 1.25rem;
+}
+@media (min-width: 1024px) {
+  .portfolio {
+    padding: 0;
+  }
 }
 .portfolio__article {
   font-size: 1.1em;
@@ -317,6 +333,12 @@ a {
   height: 11.875rem;
   object-fit: cover;
   width: 20.9375rem;
+}
+@media (min-width: 1340px) {
+  .portfolio__media {
+    height: 300px;
+    width: 350px;
+  }
 }
 .portfolio__text {
   color: #901C1C !important;

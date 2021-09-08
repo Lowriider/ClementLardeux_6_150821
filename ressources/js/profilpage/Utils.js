@@ -15,6 +15,7 @@ export default class Utils {
         this.dropdownClose = document.getElementsByClassName('dropdown__close');
         this.dropdownHidden = document.getElementsByClassName('dropdown__hidden');
         this.dropdownFilter = Array.from(document.getElementsByClassName('dropdown__filter'));
+        console.log(this.dropdownFold[0].innerHTML)
 
         this.boxLikesAndPrice(photographerMedia);
         this.dropDown();
@@ -43,19 +44,19 @@ export default class Utils {
             this.dropdownHidden[0].style.display = "none";
 
             if (index === 0) {
-                this.dropdownFold[0].innerHTML = `Popularité`;
+                this.dropdownFold[0].innerHTML = `Popularité <span class="fas fa-chevron-down dropdown__open" role="button" aria-hidden="true"></span>`;
 
                 this.mediaSortArray = photographerMedia.sort((a,b) => {
                     return b.likes - a.likes;
                 });
             } else if (index === 1) {
-                this.dropdownFold[0].innerHTML = `Date`;
+                this.dropdownFold[0].innerHTML = `Date <span class="fas fa-chevron-down dropdown__open" role="button" aria-hidden="true"></span>`;
 
                 this.mediaSortArray = photographerMedia.sort((a, b) =>{
                     return new Date(a.date).valueOf() - new Date(b.date).valueOf();
                 });
             } else if (index === 2) {
-                this.dropdownFold[0].innerHTML = `Titre`;
+                this.dropdownFold[0].innerHTML = `Titre <span class="fas fa-chevron-down dropdown__open" role="button" aria-hidden="true"></span>`;
                 this.mediaSortArray = photographerMedia.sort((a,b) =>{
                     if(a.photoName < b.photoName) {
                         return -1;
