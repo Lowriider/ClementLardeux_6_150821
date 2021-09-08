@@ -82,7 +82,7 @@ export default class Form {
     this.submitFormOk.addEventListener('click', function(e) {
       e.preventDefault(); // prevent default action of the button if the form is not filled with all the infos //
       this.checkAllFields();
-      console.log(this.checkAllFields())
+
       if (this.checkAllFields()) {
         console.log(this.firstName);
         console.log(this.lastName);
