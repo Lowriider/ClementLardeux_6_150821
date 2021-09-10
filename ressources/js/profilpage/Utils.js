@@ -1,6 +1,7 @@
 'use strict';
 
 import Factory from "../factory/Factory.js";
+import Slider from "./Slider.js";
 
 /////////////////////////////////////////
 
@@ -10,7 +11,6 @@ export default class Utils {
         this.totalLikes = 0;
         this.mediaSortArray = [];
         this.price = photographer[0].price;
-        this.heart = document.querySelectorAll('.portfolio__heart');
         this.dropdownFold = document.getElementsByClassName('dropdown__button');
         this.dropdownClose = document.getElementsByClassName('dropdown__close');
         this.dropdownHidden = document.getElementsByClassName('dropdown__hidden');
@@ -18,26 +18,9 @@ export default class Utils {
 
         this.boxLikesAndPrice(photographerMedia);
         this.dropDown();
-        // add or remove a 'like' when clicking on the 'like' icon   
-        this.heart.forEach(item => {
-            item.addEventListener('click', function (e) {
-                let total = document.querySelector('.likes__total');
-
-                if (e.target.classList.contains("portfolio__heart--liked")) {
-                    e.target.classList.replace('portfolio__heart--liked', 'portfolio__heart');
-                    e.target.classList.replace('fas', 'far');
-                    e.target.previousElementSibling.innerHTML--;
-                    this.totalLikes--;
-                    total.innerHTML = parseInt(this.totalLikes);
-                } else {
-                    e.target.classList += '--liked';
-                    e.target.classList.replace('far', 'fas');
-                    e.target.previousElementSibling.innerHTML++;
-                    this.totalLikes++;
-                    total.innerHTML = parseInt(this.totalLikes);
-                }
-            }.bind(this));
-        });
+        this.likesCounter();
+       
+        
         // FILTER MEDIA BY ...
         this.dropdownFilter.forEach((item, index) => item.addEventListener('click', (e) => {
             this.dropdownHidden[0].style.display = "none";
@@ -70,7 +53,29 @@ export default class Utils {
             }
             this.displaySortMedia(this.mediaSortArray);
         }));
-    }
+    } // add or remove a 'like' when clicking on the 'like' icon  
+    likesCounter() {
+        let heart = document.querySelectorAll('.portfolio__heart');
+        heart.forEach(item => {
+            item.addEventListener('click', function (e) {
+                let total = document.querySelector('.likes__total');
+                console.log(e.target)
+                if (e.target.classList.contains("portfolio__heart--liked")) {
+                    e.target.classList.replace('portfolio__heart--liked', 'portfolio__heart');
+                    e.target.classList.replace('fas', 'far');
+                    e.target.previousElementSibling.innerHTML--;
+                    this.totalLikes--;
+                    total.innerHTML = parseInt(this.totalLikes);
+                } else {
+                    e.target.classList += '--liked';
+                    e.target.classList.replace('far', 'fas');
+                    e.target.previousElementSibling.innerHTML++;
+                    this.totalLikes++;
+                    total.innerHTML = parseInt(this.totalLikes);
+                }
+            }.bind(this));
+        });
+    } 
     // creates a box containing the total number of likes and the photographer's price
     boxLikesAndPrice(photographerMedia) {
         for (let i = 0; i < photographerMedia.length; i++) {
@@ -89,9 +94,7 @@ export default class Utils {
 
         if (this.dropdownFold) {
             this.dropdownFold[0].addEventListener('click', () => {
-                this.dropdownHidden[0].style.display = 'block';
-                console.log(this.dropdownFilter)
-                this.dropdownFilter[1].focus();
+                this.dropdownHidden[0].style.display = 'flex';
             });
         }
         if (this.dropdownClose) {
@@ -103,6 +106,8 @@ export default class Utils {
     // DELETE ALL MEDIA AND CALL FACTORY TO REBUILD IT BY FILTER CALLED
     displaySortMedia() {
         document.querySelector('.portfolio').innerHTML = "";
-        new Factory(this.mediaSortArray);
+        let factory = new Factory(this.mediaSortArray);
+        new Slider(factory.galleryImg, factory.galleryText)
+        this.likesCounter()        
     }
 }

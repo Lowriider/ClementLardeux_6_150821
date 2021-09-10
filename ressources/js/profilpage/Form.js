@@ -74,6 +74,12 @@ export default class Form {
     // close form //
 
     document.querySelector(".form__close").addEventListener('click', this.closeModal.bind(this));
+    document.addEventListener('keydown', function(e) {
+      console.log(e.keyCode)
+      if(e.keyCode === 27) {
+        this.closeModal()
+      }
+    }.bind(this))
 
     // submit form + message //
     this.submitFormOk.addEventListener('click', function(e) {

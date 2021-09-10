@@ -9,32 +9,43 @@ export default class Slider {
     this.nextSlide = document.querySelector('div .slider__next');
     this.prevSlide = document.querySelector('div .slider__prev');
     this.close = document.querySelector('.slider__close');
-    this.target = document.querySelectorAll('.portfolio__media');
-
+    this.target = document.querySelectorAll('.portfolio__article a');
+  
     this.textNumber = 0;
     this.imgNumber = 0;
     this.imgs = media;
     this.slidertext = text;
 
-    // CLOSE SLIDER EVENT
-    this.close.addEventListener('click', function () {
-      this.slider.style.display = "none";
-    }.bind(this));
+    this.close.addEventListener('click', this.closeSlider.bind(this));
 
     // WHEN YOU CLICK ON A MEDIA OPEN SLIDER 
     this.target.forEach(item => {
       item.addEventListener('click', function (e) {
         this.slider.style.display = "block";
-        if (e.target.currentSrc.includes(".jpg")) {
-          document.querySelector('.slider__image').style.display = "block";
-          document.querySelector('.slider__video').style.display = "none";
-          document.querySelector('.slider__image').src = e.target.currentSrc;
-          document.querySelector('.slider__text').innerHTML = e.target.alt;
-        } else if (e.target.currentSrc.includes(".mp4")) {
-          document.querySelector('.slider__image').style.display = "none";
-          document.querySelector('.slider__video').style.display = "block";
-          document.querySelector('.slider__video').src = e.target.currentSrc;
-          document.querySelector('.slider__text').innerHTML = e.target.alt;
+        if (e.target.currentSrc) {
+          if (e.target.currentSrc.includes(".jpg")) {
+            document.querySelector('.slider__image').style.display = "block";
+            document.querySelector('.slider__video').style.display = "none";
+            document.querySelector('.slider__image').src = e.target.currentSrc;
+            document.querySelector('.slider__text').innerHTML = e.target.alt;
+          } else if (e.target.currentSrc.includes(".mp4")) {
+            document.querySelector('.slider__image').style.display = "none";
+            document.querySelector('.slider__video').style.display = "block";
+            document.querySelector('.slider__video').src = e.target.currentSrc;
+            document.querySelector('.slider__text').innerHTML = e.target.alt;
+          }
+        } else if (e.target.children[0].currentSrc) {
+          if (e.target.children[0].currentSrc.includes(".jpg")) {
+            document.querySelector('.slider__image').style.display = "block";
+            document.querySelector('.slider__video').style.display = "none";
+            document.querySelector('.slider__image').src = e.target.children[0].currentSrc;
+            document.querySelector('.slider__text').innerHTML = e.target.children[0].alt;
+          } else if (e.target.children[0].currentSrc.includes(".mp4")) {
+            document.querySelector('.slider__image').style.display = "none";
+            document.querySelector('.slider__video').style.display = "block";
+            document.querySelector('.slider__video').src = e.target.children[0].currentSrc;
+            document.querySelector('.slider__text').innerHTML = e.target.children[0].alt;
+          }
         }
       }.bind(this))
     });
@@ -79,7 +90,10 @@ export default class Slider {
     }
     this.sliderHTML();
   }
-// KEYBOARD NAV FUNCTION
+  closeSlider() {
+    this.slider.style.display = "none";
+  }
+  // KEYBOARD NAV FUNCTION
   keyboard(e) {
     switch (e.keyCode) {
       case 37: // left
@@ -88,6 +102,8 @@ export default class Slider {
       case 39: // right
         this.prevImg();
         break;
+      case 27:
+        this.closeSlider();
     }
   }
 }
