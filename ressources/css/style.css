@@ -609,7 +609,7 @@ a {
     top: 22px;
   }
 }
-.nav__filters span {
+.nav__filters a {
   border: 0.5px solid #C4C4C4;
   border-radius: 11px;
   color: #901C1C;
@@ -621,7 +621,7 @@ a {
   text-decoration: none;
   transition: all 0.2s;
 }
-.nav__filters span:hover, .nav__filters span.active {
+.nav__filters a:hover, .nav__filters a.active {
   color: white;
   background-color: #901C1C;
 }

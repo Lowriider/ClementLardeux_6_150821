@@ -90,6 +90,8 @@ export default class Utils {
         if (this.dropdownFold) {
             this.dropdownFold[0].addEventListener('click', () => {
                 this.dropdownHidden[0].style.display = 'block';
+                console.log(this.dropdownFilter)
+                this.dropdownFilter[1].focus();
             });
         }
         if (this.dropdownClose) {

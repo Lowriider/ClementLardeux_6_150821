@@ -16,7 +16,10 @@ export default class Form {
     // all var declared //
     this.regLetters = /^[a-zA-Zéèîï][a-zéèêàçîï]+([-'\s][a-zA-Zéèîï][a-zéèêàçîï]+)?/;
     this.regmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
-    this.message;
+    this.firstName = document.getElementById('first-name');
+    this.lastName = document.getElementById('last-name');
+    this.email = document.getElementById('email');
+    this.message = document.getElementById('message');
     this.firstNameOk = false;
     this.lastNameOk = false;
     this.emailOk = false;
@@ -26,12 +29,11 @@ export default class Form {
     this.data.forEach(item => item.addEventListener('blur', function(e) {
         // check first name field //
       if (e.target.id === "first-name") {
-        if (e.target.value.length < 2 || !this.regLetters.test(e.target.value)) { 
+        if (e.target.value.length > 2 || !this.regLetters.test(e.target.value)) { 
           this.highlightField(e.target, true);
         } else {
           this.highlightField(e.target, false);
           this.errorMessagesReset(e.target);
-          this.firstName = e.target.value;
           this.firstNameOk = true;
         }
           // check last name field // 
@@ -41,7 +43,6 @@ export default class Form {
         } else {
           this.highlightField(e.target, false);
           this.errorMessagesReset(e.target);
-          this.lastName = e.target.value;
           this.lastNameOk = true;
         }
           // check email field // 
@@ -51,7 +52,6 @@ export default class Form {
         } else {
           this.highlightField(e.target, false);
           this.errorMessagesReset(e.target);
-          this.email = e.target.value;
           this.emailOk = true;
         }
           // check textarea field // 
@@ -61,7 +61,6 @@ export default class Form {
         } else {
           this.highlightField(e.target, false);
           this.errorMessagesReset(e.target);
-          this.message = e.target.value;
           this.messageOk = true;
         }
       }
@@ -70,13 +69,11 @@ export default class Form {
     this.contact.addEventListener('click', function() {
       this.contact.style.display = "none";
       this.form.style.display = "block";
+      this.firstName.focus();
     }.bind(this));
     // close form //
 
-    document.querySelector(".form__close").addEventListener('click', function() { // this.closeForm ne fonctionne pas...
-      this.form.style.display = "none";
-      this.contact.style.display = "block";
-    }.bind(this));
+    document.querySelector(".form__close").addEventListener('click', this.closeModal.bind(this));
 
     // submit form + message //
     this.submitFormOk.addEventListener('click', function(e) {
@@ -84,10 +81,10 @@ export default class Form {
       this.checkAllFields();
 
       if (this.checkAllFields()) {
-        console.log(this.firstName);
-        console.log(this.lastName);
-        console.log(this.email);
-        console.log(this.message);
+        console.log(this.firstName.value);
+        console.log(this.lastName.value);
+        console.log(this.email.value);
+        console.log(this.message.value);
         this.formOK();
         this.closeModal();
         this.reset();
@@ -108,14 +105,18 @@ export default class Form {
   closeModal() {
     this.form.style.display = "none";
     this.contact.style.display = "block";
+    this.firstName.style.backgroundColor = "";
+    this.lastName.style.backgroundColor = "";
+    this.email.style.backgroundColor = "";
+    this.message.style.backgroundColor = "";
   }
   // fields error messages //
   errorMessages(field) {
-    switch (field.getAttribute('id')) {
-      case 'first': // Si field ID = first then display this text. //
+    switch (field.id) {
+      case 'first-name': // Si field ID = first then display this text. //
         this.errorBlock[0].innerText = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
         break;
-      case 'last':
+      case 'last-name':
         this.errorBlock[1].innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
         break;
       case 'email':
@@ -127,11 +128,11 @@ export default class Form {
     }
   }
   errorMessagesReset(field) {
-    switch (field.getAttribute('id')) {
-      case 'first': // Si field ID = first then display this text. //
+    switch (field.id) {
+      case 'first-name': // Si field ID = first then display this text. //
         this.errorBlock[0].innerText = "";
         break;
-      case 'last':
+      case 'last-name':
         this.errorBlock[1].innerText = "";
         break;
       case 'email':
@@ -147,15 +148,18 @@ export default class Form {
     if (erreur) {
       field.style.backgroundColor = "#fba";
       this.errorMessages(field);
-    } else
+    } else {
       field.style.backgroundColor = "";
-    // errorMessagesReset(field);
+      this.errorMessagesReset(field);
+    }
   }
 
   checkAllFields() {
+    let self = this;
     if (this.firstNameOk && this.lastNameOk && this.emailOk && this.messageOk) { // if  var set to true all fields are OK so function return true //
       return true;
-    } else {
+    } 
+    else {
       if (!this.firstNameOk) {
         this.firstName.style.backgroundColor = "#fba";
       }
