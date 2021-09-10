@@ -201,16 +201,13 @@ a {
     font-size: 1rem;
     font-weight: 500;
     justify-content: space-between;
-    left: 13rem;
     padding: 0.625rem 1.25rem;
-    position: absolute;
-    top: 23rem;
+    position: relative;
     width: 10rem;
   }
 }
 @media (min-width: 1024px) and (min-width: 1340px) {
   .dropdown__button {
-    position: relative;
     top: -0.3rem;
     left: 0;
   }
@@ -219,26 +216,16 @@ a {
   .dropdown__hidden {
     background: #901C1C;
     display: none;
+    flex-direction: column;
     border-radius: 5px;
     color: #fff;
     display: none;
-    left: 195px;
     padding: 0;
-    position: absolute;
-    top: 405px;
-    width: 11rem;
-    z-index: 10;
-  }
-}
-@media (min-width: 1024px) and (min-width: 1340px) {
-  .dropdown__hidden {
-    flex-direction: column;
     position: relative;
-    left: 0;
-    top: -4.2rem;
+    width: 10rem;
+    z-index: 10;
+    top: -4.8rem;
   }
-}
-@media (min-width: 1024px) {
   .dropdown__hidden :nth-child(1) {
     display: flex;
     justify-content: space-between;
@@ -274,7 +261,7 @@ a {
 @media (min-width: 1024px) {
   .dropdown__open {
     position: relative;
-    top: 1px;
+    top: -30px;
     left: 135px;
   }
 }

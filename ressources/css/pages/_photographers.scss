@@ -176,14 +176,11 @@
             font-size: 1rem;
             font-weight: 500;
             justify-content: space-between;
-            left: 13rem;
             padding: .625rem 1.25rem;
-            position: absolute;
-            top: 23rem;
+            position: relative;
             width: 10rem;
 
             @include breakpoint(desktop) {
-                position: relative;
                 top: -0.3rem;
                 left: 0;
             }
@@ -192,21 +189,15 @@
         &__hidden {
             background: $theme-color-red;
             display: none;
+            flex-direction: column;
             border-radius: 5px;
             color: #fff;
             display: none;
-            left: 195px;
             padding: 0;
-            position: absolute;
-            top: 405px;
-            width: 11rem;
+            position: relative;
+            width: 10rem;
             z-index: 10;
-            @include breakpoint(desktop) {
-                flex-direction: column;
-                position: relative;
-                left: 0;
-                top: -4.2rem;
-            }
+            top: -4.8rem;
             :nth-child(1) {
                 display: flex;
                 justify-content: space-between;
@@ -242,7 +233,7 @@
 
         &__open {
             position: relative;
-            top: 1px;
+            top: -30px;
             left: 135px;
 
             @include breakpoint(desktop) {
