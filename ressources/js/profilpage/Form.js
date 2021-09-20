@@ -1,9 +1,9 @@
 export default class Form {
   constructor(profil) {
     this.profil = profil,
- 
-    // DOM Elements // 
-    this.form = document.querySelector(".form");
+
+      // DOM Elements // 
+      this.form = document.querySelector(".form");
     this.contact = document.querySelector(".profil__contact");
     this.closeForm = document.querySelector(".form__close");
     this.header = document.querySelector(".form__header");
@@ -26,17 +26,17 @@ export default class Form {
     this.messageOk = false;
 
     // EVENT STARTS WHEN YOU LEAVE INPUT FIELD
-    this.data.forEach(item => item.addEventListener('blur', function(e) {
-        // check first name field //
+    this.data.forEach(item => item.addEventListener('blur', function (e) {
+      // check first name field //
       if (e.target.id === "first-name") {
-        if (e.target.value.length > 2 || !this.regLetters.test(e.target.value)) { 
+        if (e.target.value.length < 2 || !this.regLetters.test(e.target.value)) {
           this.highlightField(e.target, true);
         } else {
           this.highlightField(e.target, false);
           this.errorMessagesReset(e.target);
           this.firstNameOk = true;
         }
-          // check last name field // 
+        // check last name field // 
       } else if (e.target.id === "last-name") {
         if (e.target.value.length < 2 || !this.regLetters.test(e.target.value)) {
           this.highlightField(e.target, true);
@@ -45,7 +45,7 @@ export default class Form {
           this.errorMessagesReset(e.target);
           this.lastNameOk = true;
         }
-          // check email field // 
+        // check email field // 
       } else if (e.target.id === "email") {
         if (e.target.value.length < 2 || !this.regmail.test(e.target.value)) {
           this.highlightField(e.target, true);
@@ -54,7 +54,7 @@ export default class Form {
           this.errorMessagesReset(e.target);
           this.emailOk = true;
         }
-          // check textarea field // 
+        // check textarea field // 
       } else if (e.target.id === "message") {
         if (e.target.value.length < 1 || e.target.value > 100) { // if length of e.target is sup or equal to 1 and 
           this.highlightField(e.target, true);
@@ -65,8 +65,8 @@ export default class Form {
         }
       }
     }.bind(this)));
- 
-    this.contact.addEventListener('click', function() {
+
+    this.contact.addEventListener('click', function () {
       this.contact.style.display = "none";
       this.form.style.display = "block";
       this.firstName.focus();
@@ -74,15 +74,15 @@ export default class Form {
     // close form //
 
     document.querySelector(".form__close").addEventListener('click', this.closeModal.bind(this));
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       console.log(e.keyCode)
-      if(e.keyCode === 27) {
+      if (e.keyCode === 27) {
         this.closeModal()
       }
     }.bind(this))
 
     // submit form + message //
-    this.submitFormOk.addEventListener('click', function(e) {
+    this.submitFormOk.addEventListener('click', function (e) {
       e.preventDefault(); // prevent default action of the button if the form is not filled with all the infos //
       this.checkAllFields();
 
@@ -99,7 +99,7 @@ export default class Form {
       }
     }.bind(this));
   }
-  
+
   //alert form not OK //
   formNotOK() {
     alert("verifiez les champs en rouge");
@@ -164,8 +164,7 @@ export default class Form {
     let self = this;
     if (this.firstNameOk && this.lastNameOk && this.emailOk && this.messageOk) { // if  var set to true all fields are OK so function return true //
       return true;
-    } 
-    else {
+    } else {
       if (!this.firstNameOk) {
         this.firstName.style.backgroundColor = "#fba";
       }

@@ -10,7 +10,7 @@ export default class Slider {
     this.prevSlide = document.querySelector('div .slider__prev');
     this.close = document.querySelector('.slider__close');
     this.target = document.querySelectorAll('.portfolio__article a');
-  
+
     this.textNumber = 0;
     this.imgNumber = 0;
     this.imgs = media;

@@ -23,8 +23,6 @@ export default class Filter {
                 this.filterPhotographers(this.articles);
             }.bind(this));
         });
-
-
     }
     // ADD SELECTED TAGS IN NEW ARRAY
     getActiveFilters() {

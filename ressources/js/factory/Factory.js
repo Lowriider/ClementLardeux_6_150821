@@ -11,7 +11,7 @@ export default class Factory {
         this.galleryText = [];
         this.createMedia(this.media);
     }
-    
+
     createMedia(photographerMedia) {
         for (let i = 0; i < photographerMedia.length; i++) {
             if (photographerMedia[i].image) {
@@ -21,7 +21,7 @@ export default class Factory {
                 this.galleryImg.push(photographerMedia[i].image);
                 this.galleryText.push(photographerMedia[i].photoName);
             } else if (photographerMedia[i].video) {
-                 // CREATE VID //
+                // CREATE VID //
                 this.createVideo(photographerMedia, i)
                 // TAKE IMG + ALT AND PUT THEM IN ARRAYS
                 this.galleryImg.push(photographerMedia[i].video);
@@ -32,7 +32,7 @@ export default class Factory {
     createVideo(photographerMedia, i) {
 
         let articlePortfolio = document.createElement("article");
-        articlePortfolio.className = "portfolio__article";        
+        articlePortfolio.className = "portfolio__article";
         let portfolioTemplate = `
                 <a href="#" title="${photographerMedia[i].photoName}">
                 <video controls="controls" class="portfolio__media" src="ressources/${photographerMedia[i].video}">

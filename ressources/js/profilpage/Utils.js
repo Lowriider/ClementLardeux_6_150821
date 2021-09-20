@@ -19,8 +19,7 @@ export default class Utils {
         this.boxLikesAndPrice(photographerMedia);
         this.dropDown();
         this.likesCounter();
-       
-        
+
         // FILTER MEDIA BY ...
         this.dropdownFilter.forEach((item, index) => item.addEventListener('click', (e) => {
             this.dropdownHidden[0].style.display = "none";
@@ -28,25 +27,24 @@ export default class Utils {
             if (index === 0) {
                 this.dropdownFold[0].innerHTML = `Popularité`;
                 // SORT MEDIA BY LIKES
-                this.mediaSortArray = photographerMedia.sort((a,b) => {
+                this.mediaSortArray = photographerMedia.sort((a, b) => {
                     return b.likes - a.likes;
                 });
                 // IF EVENT = DATE
             } else if (index === 1) {
                 this.dropdownFold[0].innerHTML = `Date`;
                 // SORT MEDIA BY MOST RECENT DATE
-                this.mediaSortArray = photographerMedia.sort((a, b) =>{
+                this.mediaSortArray = photographerMedia.sort((a, b) => {
                     return new Date(a.date).valueOf() - new Date(b.date).valueOf();
                 });
-                 // IF EVENT = TITRE
+                // IF EVENT = TITRE
             } else if (index === 2) {
                 this.dropdownFold[0].innerHTML = `Titre`;
                 // SORT MEDIA BY ALPHABETIC ORDER
-                this.mediaSortArray = photographerMedia.sort((a,b) =>{
-                    if(a.photoName < b.photoName) {
+                this.mediaSortArray = photographerMedia.sort((a, b) => {
+                    if (a.photoName < b.photoName) {
                         return -1;
-                    }
-                    else if(a.photoName > b.photoName) {
+                    } else if (a.photoName > b.photoName) {
                         return 1;
                     }
                 });
@@ -75,7 +73,7 @@ export default class Utils {
                 }
             }.bind(this));
         });
-    } 
+    }
     // creates a box containing the total number of likes and the photographer's price
     boxLikesAndPrice(photographerMedia) {
         for (let i = 0; i < photographerMedia.length; i++) {
@@ -108,6 +106,6 @@ export default class Utils {
         document.querySelector('.portfolio').innerHTML = "";
         let factory = new Factory(this.mediaSortArray);
         new Slider(factory.galleryImg, factory.galleryText)
-        this.likesCounter()        
+        this.likesCounter()
     }
 }
